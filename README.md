@@ -121,7 +121,168 @@ if _name_ == "_main_":
 ```
 # Output Program
 ```
+"c:/Users/acer/Documents/KULIAH/PEMROGRAMAN/Praktikum 8/classdftrmhs.py"
 
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312410012
+Masukkan nama: Amanda
+Masukkan nilai tugas: 90
+Masukkan nilai UTS: 95
+Masukkan nilai UAS: 96
+Data dengan NIM 312410012, nama Amanda, dan nilai tugas 90.0, UTS 95.0, UAS 96.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312410071
+Masukkan nama: Hoshi
+Masukkan nilai tugas: 98
+Masukkan nilai UTS: 94
+Masukkan nilai UAS: 90
+Data dengan NIM 312410071, nama Hoshi, dan nilai tugas 98.0, UTS 94.0, UAS 90.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312419876
+Masukkan nama: Uzumaki
+Masukkan nilai tugas: 87
+Masukkan nilai UTS: 90
+Masukkan nilai UAS: 93
+Data dengan NIM 312419876, nama Uzumaki, dan nilai tugas 87.0, UTS 90.0, UAS 93.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312418752
+Masukkan nama: Uciha
+Masukkan nilai tugas: 89
+Masukkan nilai UTS: 94
+Masukkan nilai UAS: 95
+Data dengan NIM 312418752, nama Uciha, dan nilai tugas 89.0, UTS 94.0, UAS 95.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312418743
+Masukkan nama: Sasuke
+Masukkan nilai tugas: 98
+Masukkan nilai UTS: 87
+Masukkan nilai UAS: 85
+Data dengan NIM 312418743, nama Sasuke, dan nilai tugas 98.0, UTS 87.0, UAS 85.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312413490
+Masukkan nama: Gara
+Masukkan nilai tugas: 90
+Masukkan nilai UTS: 98
+Masukkan nilai UAS: 99
+Data dengan NIM 312413490, nama Gara, dan nilai tugas 90.0, UTS 98.0, UAS 99.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312410052
+Masukkan nama: liana
+Masukkan nilai tugas: 99
+Masukkan nilai UTS: 98
+Masukkan nilai UAS: 95
+Data dengan NIM 312410052, nama liana, dan nilai tugas 99.0, UTS 98.0, UAS 95.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312410021
+Masukkan nama: Zeje
+Masukkan nilai tugas: 89
+Masukkan nilai UTS: 90
+Masukkan nilai UAS: 96
+Data dengan NIM 312410021, nama Zeje, dan nilai tugas 89.0, UTS 90.0, UAS 96.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 1
+Masukkan NIM: 312410089 
+Masukkan nama: Sqoup   
+Masukkan nilai tugas: 89
+Masukkan nilai UTS: 97
+Masukkan nilai UAS: 96
+Data dengan NIM 312410089, nama Sqoup, dan nilai tugas 89.0, UTS 97.0, UAS 96.0 berhasil ditambahkan.
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 2
+
+===========================================
+Daftar Nilai Mahasiswa:
+===========================================
+NIM          Nama                 Tugas    UTS      UAS      Nilai Akhir 
+-------------------------------------------
+312410012    Amanda               90.0     95.0     96.0     93.85
+312410071    Hoshi                98.0     94.0     90.0     93.80
+312419876    Uzumaki              87.0     90.0     93.0     90.15
+312418752    Uciha                89.0     94.0     95.0     92.85
+312418743    Sasuke               98.0     87.0     85.0     89.60       
+312413490    Gara                 90.0     98.0     99.0     95.95
+312410052    liana                99.0     98.0     95.0     97.25
+312410021    Zeje                 89.0     90.0     96.0     91.80
+312410089    Sqoup                89.0     97.0     96.0     94.25
+===========================================
+
+Menu:
+1. Tambah data
+2. Tampilkan data
+3. Hapus data
+4. Ubah data
+5. Keluar
+Pilih menu (1-5): 5
+
+Program selesai. TERIMAKASIH.
+PS C:\Users\acer\Documents\KULIAH\PEMROGRAMAN\Praktikum 8> 
 ```
 # Diagram Class
 ```
