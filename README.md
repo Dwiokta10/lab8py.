@@ -3,196 +3,164 @@
 
 # "Program Menampilkan Daftar Nilai Mahasiswa"
 # Deskripsi Program
-Program sederhana ini dibuat menggunakan bahasa python Dictionary dengan fitur:
+Program Sederhana dengan Python Menggunakan Class
+Program ini dibuat dengan bahasa pemrograman Python dan menggunakan konsep class. Class di sini berfungsi sebagai tempat untuk menyimpan data dan berbagai aksi yang akan dilakukan pada data tersebut. Di dalam class, kita bisa mendefinisikan berbagai macam data dan fungsi untuk mengolah data.
+```
 
-Pengguna untuk mengelola data mahasiswa, termasuk menambah, mengubah, menghapus, dan menampilkan nilai mahasiswa
+Apa itu Class?
+Class itu seperti cetakan atau blueprint. Dari class ini,
+kita bisa membuat objek-objek yang memiliki data dan fungsi yang sudah ditentukan sebelumnya.
+```
+
+Fitur-Fitur Program:
+    Menambah Data: Menambah data baru ke dalam sistem.
+    Menampilkan Data: Menampilkan data yang sudah ada.
+    Menghapus Data: Menghapus data yang ada.
+    Mengubah Data: Mengubah data yang sudah ada.
+    Keluar: Keluar dari program.
+Dengan menggunakan class, program ini bisa lebih terorganisir dan mudah untuk mengelola data.
+``
+
 ## Flowchart Program
-![Flowchart](https://github.com/Dwiokta10/Praktikum7/blob/main/flowchat%20Praktikum%207.png)
+![Flowchart](https://github.com/Dwiokta10/lab8py./blob/main/flowchartlab8.png)
 # Kode Program
 ```python
-# Daftar nilai mahasiswa
-mahasiswa = {}
+class DaftarNilaiMahasiswa:
+    def _init_(self):
+        # Menyimpan data dalam bentuk dictionary, dengan NIM sebagai key
+        self.data = {}
 
-# Fungsi untuk menambah data
-def tambah(nama, nilai):
-    mahasiswa[nama] = nilai
-    print(f"Data mahasiswa {nama} dengan nilai {nilai} telah ditambahkan.")
+    def tambah(self, nim, nama, nilai_tugas, nilai_uts, nilai_uas):
+        if nim in self.data:
+            print(f"Data dengan NIM {nim} sudah ada.")
+        else:
+            # Menghitung nilai akhir berdasarkan bobot
+            nilai_akhir = (nilai_tugas * 0.30) + (nilai_uts * 0.35) + (nilai_uas * 0.35)
+            self.data[nim] = {
+                'nama': nama,
+                'nilai_tugas': nilai_tugas,
+                'nilai_uts': nilai_uts,
+                'nilai_uas': nilai_uas,
+                'nilai_akhir': nilai_akhir  # Menyimpan nilai akhir dalam bentuk persentase
+            }
+            print(f"Data dengan NIM {nim}, nama {nama}, dan nilai tugas {nilai_tugas}, UTS {nilai_uts}, UAS {nilai_uas} berhasil ditambahkan.")
 
-# Fungsi untuk menampilkan data
-def tampilkan():
-    if mahasiswa:
-        print("Daftar Mahasiswa dan Nilai:")
-        for nama, nilai in mahasiswa.items():
-            print(f"Nama: {nama}, Nilai: {nilai}")
-    else:
-        print("Tidak ada data mahasiswa.")
+    def tampilkan(self):
+        if not self.data:
+            print("Belum ada data yang ditambahkan.")
+        else:
+            print("\n===========================================")
+            print("Daftar Nilai Mahasiswa:")
+            print("===========================================")
+            # Menampilkan header
+            print(f"{'NIM':<12} {'Nama':<20} {'Tugas':<8} {'UTS':<8} {'UAS':<8} {'Nilai Akhir':<12}")
+            print("-------------------------------------------")
+            for nim, info in self.data.items():
+                # Menampilkan NIM, Nama, nilai tugas, nilai UTS, nilai UAS, dan nilai akhir
+                print(f"{nim:<12} {info['nama']:<20} {info['nilai_tugas']:<8} {info['nilai_uts']:<8} {info['nilai_uas']:<8} {info['nilai_akhir']:<12.2f}")
+            print("===========================================")
 
-# Fungsi untuk menghapus data berdasarkan nama
-def hapus(nama):
-    if nama in mahasiswa:
-        del mahasiswa[nama]
-        print(f"Data mahasiswa {nama} telah dihapus.")
-    else:
-        print(f"Mahasiswa dengan nama {nama} tidak ditemukan.")
+    def hapus(self, nim):
+        if nim in self.data:
+            del self.data[nim]
+            print(f"Data dengan NIM {nim} berhasil dihapus.")
+        else:
+            print(f"Data dengan NIM {nim} tidak ditemukan.")
 
-# Fungsi untuk mengubah data berdasarkan nama
-def ubah(nama, nilai_baru):
-    if nama in mahasiswa:
-        mahasiswa[nama] = nilai_baru
-        print(f"Data mahasiswa {nama} telah diubah menjadi nilai {nilai_baru}.")
-    else:
-        print(f"Mahasiswa dengan nama {nama} tidak ditemukan.")
+    def ubah(self, nim, nilai_tugas_baru, nilai_uts_baru, nilai_uas_baru):
+        if nim in self.data:
+            # Menghitung nilai akhir berdasarkan nilai baru dan bobot
+            nilai_akhir_baru = (nilai_tugas_baru * 0.30) + (nilai_uts_baru * 0.35) + (nilai_uas_baru * 0.35)
+            self.data[nim]['nilai_tugas'] = nilai_tugas_baru
+            self.data[nim]['nilai_uts'] = nilai_uts_baru
+            self.data[nim]['nilai_uas'] = nilai_uas_baru
+            self.data[nim]['nilai_akhir'] = nilai_akhir_baru
+            print(f"Data dengan NIM {nim} berhasil diubah dengan nilai tugas {nilai_tugas_baru}, UTS {nilai_uts_baru}, dan UAS {nilai_uas_baru}. Nilai akhir: {nilai_akhir_baru:.2f}.")
+        else:
+            print(f"Data dengan NIM {nim} tidak ditemukan.")
 
-# Menu untuk interaksi dengan pengguna
-def menu():
+
+# Contoh penggunaan program
+if _name_ == "_main_":
+    daftar_nilai = DaftarNilaiMahasiswa()
+    
     while True:
         print("\nMenu:")
-        print("1. Tambah Data")
-        print("2. Tampilkan Data")
-        print("3. Hapus Data")
-        print("4. Ubah Data")
+        print("1. Tambah data")
+        print("2. Tampilkan data")
+        print("3. Hapus data")
+        print("4. Ubah data")
         print("5. Keluar")
-        pilihan = input("Pilih menu (1/2/3/4/5): ")
-
-        if pilihan == '1':
-            nama = input("Masukkan nama mahasiswa: ")
-            nilai = input("Masukkan nilai mahasiswa: ")
-            tambah(nama, nilai)
-        elif pilihan == '2':
-            tampilkan()
-        elif pilihan == '3':
-            nama = input("Masukkan nama mahasiswa yang ingin dihapus: ")
-            hapus(nama)
-        elif pilihan == '4':
-            nama = input("Masukkan nama mahasiswa yang ingin diubah: ")
-            nilai_baru = input("Masukkan nilai baru: ")
-            ubah(nama, nilai_baru)
-        elif pilihan == '5':
-            print("Keluar dari program.")
+        
+        pilihan = input("Pilih menu (1-5): ")
+        
+        if pilihan == "1":
+            nim = input("Masukkan NIM: ")
+            nama = input("Masukkan nama: ")
+            nilai_tugas = float(input("Masukkan nilai tugas: "))
+            nilai_uts = float(input("Masukkan nilai UTS: "))
+            nilai_uas = float(input("Masukkan nilai UAS: "))
+            daftar_nilai.tambah(nim, nama, nilai_tugas, nilai_uts, nilai_uas)
+        elif pilihan == "2":
+            daftar_nilai.tampilkan()
+        elif pilihan == "3":
+            nim = input("Masukkan NIM yang akan dihapus: ")
+            daftar_nilai.hapus(nim)
+        elif pilihan == "4":
+            nim = input("Masukkan NIM yang akan diubah: ")
+            nilai_tugas_baru = float(input("Masukkan nilai tugas baru: "))
+            nilai_uts_baru = float(input("Masukkan nilai UTS baru: "))
+            nilai_uas_baru = float(input("Masukkan nilai UAS baru: "))
+            daftar_nilai.ubah(nim, nilai_tugas_baru, nilai_uts_baru, nilai_uas_baru)
+        elif pilihan == "5":
+            print("\nProgram selesai. TERIMAKASIH.")
             break
         else:
             print("Pilihan tidak valid. Silakan coba lagi.")
 
-# Menjalankan program
-menu()
-
 ```
 # Output Program
 ```
-PS C:\Users\acer\Documents\KULIAH\PEMROGRAMAN\Pratikum 7> python -u "c:\Users\acer\Documents\KULIAH\PEMROGRAMAN\Pratikum 7\daftarnilaimhs.py"
 
-Menu:
-1. Tambah Data
-2. Tampilkan Data
-3. Hapus Data
-4. Ubah Data
-5. Keluar
-Pilih menu (1/2/3/4/5): 1
-Masukkan nama mahasiswa: Adila
-Masukkan nilai mahasiswa: 98
-Data mahasiswa Adila dengan nilai 98 telah ditambahkan.
+```
+# Diagram Class
+```
++-------------------------+
+|  DaftarNilaiMahasiswa   |
++-------------------------+
+| - data: dict            |
++-------------------------+
+| + _init_()            |
+| + tambah(nama, nilai)   |
+| + tampilkan()           |
+| + hapus(nama)           |
+| + ubah(nama, nilai_baru)|
++-------------------------+
+```
 
-Menu:
-1. Tambah Data
-2. Tampilkan Data
-3. Hapus Data
-4. Ubah Data
-5. Keluar
-Pilih menu (1/2/3/4/5): 1
-Masukkan nama mahasiswa: Indira
-Masukkan nilai mahasiswa: 90
-Data mahasiswa Indira dengan nilai 90 telah ditambahkan.
-
-Menu:
-1. Tambah Data
-2. Tampilkan Data
-3. Hapus Data
-4. Ubah Data
-5. Keluar
-Pilih menu (1/2/3/4/5): 1
-Masukkan nama mahasiswa: Maya
-Masukkan nilai mahasiswa: 98
-Data mahasiswa Maya dengan nilai 98 telah ditambahkan.
-
-Menu:
-1. Tambah Data
-2. Tampilkan Data
-3. Hapus Data
-4. Ubah Data
-5. Keluar
-Pilih menu (1/2/3/4/5): 1
-Masukkan nama mahasiswa: Andi
-Masukkan nilai mahasiswa: 98
-Data mahasiswa Andi dengan nilai 98 telah ditambahkan.
-
-Menu:
-1. Tambah Data
-2. Tampilkan Data
-3. Hapus Data
-4. Ubah Data
-5. Keluar
-Pilih menu (1/2/3/4/5): 1
-Masukkan nama mahasiswa: Yandi
-Masukkan nilai mahasiswa: 96
-Data mahasiswa Yandi dengan nilai 96 telah ditambahkan.
-
-Menu:
-1. Tambah Data
-2. Tampilkan Data
-3. Hapus Data
-4. Ubah Data
-5. Keluar
-Pilih menu (1/2/3/4/5): 1
-Masukkan nama mahasiswa: Pelisa
-Masukkan nilai mahasiswa: 98
-Data mahasiswa Pelisa dengan nilai 98 telah ditambahkan.
-
-Menu:
-1. Tambah Data
-2. Tampilkan Data
-3. Hapus Data
-4. Ubah Data
-5. Keluar
-Pilih menu (1/2/3/4/5): 2
-Daftar Mahasiswa dan Nilai:
-Nama: Adila, Nilai: 98
-Nama: Indira, Nilai: 90
-Nama: Maya, Nilai: 98
-Nama: Andi, Nilai: 98
-Nama: Yandi, Nilai: 96
-Nama: Pelisa, Nilai: 98
-
-Menu:
-1. Tambah Data
-2. Tampilkan Data
-3. Hapus Data
-4. Ubah Data
-5. Keluar
-Pilih menu (1/2/3/4/5): 5
-Keluar dari Program, Terimakasih.
-PS C:\Users\acer\Documents\KULIAH\PEMROGRAMAN\Pratikum 7> 
-
-``` 
 # Cara Kerja Program
-1. *Inisialisasi*:
-   - Program dimulai dengan mendeklarasikan dictionary kosong mahasiswa untuk menyimpan data mahasiswa.
-
-2. *Menu Utama*:
-   - Program menampilkan menu interaktif yang memungkinkan pengguna untuk memilih salah satu dari lima opsi:
-     - *Tambah Data*: Menambah data mahasiswa baru ke dalam dictionary.
-     - *Tampilkan Data*: Menampilkan seluruh daftar mahasiswa beserta nilai mereka.
-     - *Hapus Data*: Menghapus data mahasiswa berdasarkan nama.
-     - *Ubah Data*: Mengubah nilai mahasiswa berdasarkan nama.
-     - *Keluar*: Keluar dari program.
-
-3. *Fungsi-fungsi Utama*:
-   - *tambah(nama, nilai)*: Fungsi ini digunakan untuk menambah data mahasiswa ke dalam dictionary. Nama mahasiswa menjadi key, dan nilai mahasiswa menjadi value.
-   - *tampilkan()*: Fungsi ini menampilkan seluruh data mahasiswa dalam dictionary. Jika dictionary kosong, program akan memberi pesan bahwa tidak ada data mahasiswa.
-   - *hapus(nama)*: Fungsi ini menghapus data mahasiswa berdasarkan nama yang diberikan. Jika nama ditemukan, data akan dihapus; jika tidak, program memberi pesan bahwa nama tersebut tidak ditemukan.
-   - *ubah(nama, nilai_baru)*: Fungsi ini mengubah nilai mahasiswa berdasarkan nama. Jika nama ditemukan, nilai mahasiswa akan diperbarui dengan nilai baru yang diberikan.
-
-4. *Proses Pengguna*:
-   - Pengguna akan dipandu melalui menu untuk memilih tindakan yang ingin dilakukan.
-   - Setelah memilih tindakan, pengguna akan diminta untuk memasukkan data yang diperlukan (nama mahasiswa dan nilai).
-   - Setelah selesai dengan tindakan yang dipilih, program akan kembali menampilkan menu utama.
-   - Program akan terus berjalan hingga pengguna memilih opsi "Keluar" untuk keluar dari aplikasi.
+1. Inisialisasi Program:
+Program dimulai dengan pembuatan objek dari class DaftarNilaiMahasiswa. Kelas ini memiliki atribut self.data, yaitu sebuah dictionary yang digunakan untuk menyimpan data mahasiswa, di mana NIM adalah key dan informasi lainnya adalah value.
+2. Menu Pilihan
+Program menampilkan menu interaktif untuk memilih aksi:
+1. Tambah Data
+2. Tampilkan Data
+3. Hapus Data
+4. Ubah Data
+5. Keluar
+3. Proses Berdasarkan Pilihan
+Tambah Data (Opsi 1):
+Pengguna memasukkan NIM, nama, nilai tugas, nilai UTS, dan nilai UAS.
+Program menghitung nilai akhir dan menyimpan data dalam dictionary jika NIM belum ada.
+Tampilkan Data (Opsi 2):
+Program menampilkan data mahasiswa yang telah disimpan dalam format tabel.
+Hapus Data (Opsi 3):
+Pengguna memasukkan NIM yang akan dihapus.
+Program menghapus data mahasiswa jika NIM ditemukan.
+Ubah Data (Opsi 4):
+Pengguna memasukkan NIM dan nilai baru untuk tugas, UTS, dan UAS.
+Program menghitung ulang nilai akhir dan memperbarui data.
+Keluar (Opsi 5):
+Program berhenti dan keluar dari loop.
+4. Program Berulang
+Setelah tiap aksi, menu ditampilkan lagi hingga pengguna memilih untuk keluar.Print "Progam selesai. TERIMAKASIH"
